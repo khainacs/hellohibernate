@@ -1,4 +1,4 @@
-package org.example.Util;
+package org.example.Service;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -8,7 +8,7 @@ interface BaseService<T> {
 
     public T getById(Long id);
 
-    public List<T> getAll();
+    public List<T> getAll(String sql);
 
     public boolean delete(T entity);
 

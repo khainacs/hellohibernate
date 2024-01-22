@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
 
 @Setter
 @Getter
@@ -14,9 +16,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student extends BaseEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -36,5 +38,8 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classId", nullable = true)
     private Classes aClass;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
+    private List<Subject> subjects;
 
 }

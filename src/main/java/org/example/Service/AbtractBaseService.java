@@ -1,13 +1,13 @@
-package org.example.Util;
+package org.example.Service;
 
 import org.example.Entites.Classes;
+import org.example.Util.HiberanteUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class ClassesDao<T> implements BaseService<T>{
-
+public class AbtractBaseService<T> implements BaseService<T>{
     @Override
     public boolean save(T entity) {
         Session session = null;
@@ -54,26 +54,26 @@ public class ClassesDao<T> implements BaseService<T>{
     }
 
     @Override
-    public List<T> getAll() {
+    public List<T> getAll(String sql) {
         Session session = null;
         Transaction transaction = null;
-        List<T> classes = null;
+        List<T> listObject = null;
         try{
             session = HiberanteUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
 
-            classes = session.createQuery("from Classes "). list();
+            listObject = session.createQuery(sql). list();
         }catch (Exception e){
             e.getMessage();
             transaction.rollback();
-            return classes;
+            return listObject;
         }
         finally {
             if (session != null){
                 session.close();
             }
         }
-        return classes;
+        return listObject;
     }
 
     @Override

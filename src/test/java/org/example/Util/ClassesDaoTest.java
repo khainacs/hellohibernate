@@ -2,6 +2,7 @@ package org.example.Util;
 
 import org.example.Entites.Classes;
 import org.example.Entites.Student;
+import org.example.Service.ClassesDao;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,24 +12,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ClassesDaoTest {
     private static ClassesDao classesDao = new ClassesDao();
     private static List<Classes> classes = new ArrayList<>();
 
     @BeforeAll
     public static void init(){
-        Student student1 = new Student(1L, "John Doe", new Date(), "A101", "Spring", null);
-        Student student2 = new Student(2L, "Jane Smith", new Date(), "B202", "Fall", null);
-        Student student3 = new Student(3L, "Bob Johnson", new Date(), "C303", "Summer", null);
-        Student student4 = new Student(4L, "Alice Brown", new Date(), "D404", "Winter", null);
-        Student student5 = new Student(5L, "Charlie Wilson", new Date(), "E505", "Spring", null);
-        Student student6 = new Student(6L, "Eva Davis", new Date(), "F606", "Fall", null);
-        Student student7 = new Student(7L, "Frank White", new Date(), "G707", "Summer", null);
-        Student student8 = new Student(8L, "Grace Miller", new Date(), "H808", "Winter", null);
-        Student student9 = new Student(9L, "Henry Taylor", new Date(), "I909", "Spring", null);
-        Student student10 = new Student(10L, "Ivy Martin", new Date(), "J1010", "Fall", null);
+        Student student1 = new Student(1L, "John Doe", new Date(), "A101", "Spring", null, null);
+        Student student2 = new Student(2L, "Jane Smith", new Date(), "B202", "Fall", null, null);
+        Student student3 = new Student(3L, "Bob Johnson", new Date(), "C303", "Summer", null, null);
+        Student student4 = new Student(4L, "Alice Brown", new Date(), "D404", "Winter", null, null);
+        Student student5 = new Student(5L, "Charlie Wilson", new Date(), "E505", "Spring", null, null);
+        Student student6 = new Student(6L, "Eva Davis", new Date(), "F606", "Fall", null, null);
+        Student student7 = new Student(7L, "Frank White", new Date(), "G707", "Summer", null, null);
+        Student student8 = new Student(8L, "Grace Miller", new Date(), "H808", "Winter", null, null);
+        Student student9 = new Student(9L, "Henry Taylor", new Date(), "I909", "Spring", null, null);
+        Student student10 = new Student(10L, "Ivy Martin", new Date(), "J1010", "Fall", null, null);
 
         ArrayList<Student> students1 = new ArrayList<>();
         students1.add(student1);
@@ -73,7 +72,7 @@ class ClassesDaoTest {
 
     @Test
     void getAll() {
-        Assert.assertFalse(classesDao.getAll().isEmpty());
+        Assert.assertFalse(classesDao.getAll("from Classes").isEmpty());
     }
 
 

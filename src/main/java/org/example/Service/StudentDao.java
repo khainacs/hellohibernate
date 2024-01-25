@@ -8,4 +8,4 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class StudentDao extends AbtractBaseService<Student> { }
+public class StudentDao extends AbtractBaseService<Student> {}

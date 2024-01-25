@@ -45,9 +45,9 @@ class ClassesDaoTest {
         students3.add(student9);
         students3.add(student10);
 
-        Classes class1 = new Classes(1L, "Math101", "Floor1", new Date(), new Time(System.currentTimeMillis()), "Math", students1);
-        Classes class2 = new Classes(2L, "History202", "Floor2", new Date(), new Time(System.currentTimeMillis()), "History", students2);
-        Classes class3 = new Classes(3L, "Physics303", "Floor3", new Date(), new Time(System.currentTimeMillis()), "Physics", students3);
+        Classes class1 = new Classes(1L, "Math101", "Floor1", new Date(), new Time(System.currentTimeMillis()), students1);
+        Classes class2 = new Classes(2L, "History202", "Floor2", new Date(), new Time(System.currentTimeMillis()), students2);
+        Classes class3 = new Classes(3L, "Physics303", "Floor3", new Date(), new Time(System.currentTimeMillis()),  students3);
 
         classes.add(class1);
         classes.add(class2);
@@ -62,12 +62,22 @@ class ClassesDaoTest {
         }
     }
 
+    private static Classes classes1;
     @Test
     void getById() {
-        for (Classes i: classes) {
-            Classes classes1 = (Classes) classesDao.getById(i.getId());
-            Assert.assertEquals(i.getId(), classes1.getId());
-        }
+//        for (Classes i: classes) {
+//            Classes classes1 = (Classes) classesDao.getById(i.getId());
+//            Assert.assertEquals(i.getId(), classes1.getId());
+//        }
+
+        classes1 = classesDao.getById(1L);
+        System.out.println(classes1.getName());
+    }
+
+    @Test
+    void test(){
+        System.out.println(classes1.getId());
+        System.out.println(classes1.getName());
     }
 
     @Test

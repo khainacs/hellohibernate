@@ -15,9 +15,9 @@ public class AbtractBaseService<T> implements BaseService<T>{
         try{
             session = HiberanteUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-
             session.save(entity);
             transaction.commit();
+            return true;
         }
         catch (Exception e){
             e.getMessage();
@@ -28,7 +28,6 @@ public class AbtractBaseService<T> implements BaseService<T>{
                 session.close();
             }
         }
-        return true;
     }
 
     @Override
@@ -41,6 +40,7 @@ public class AbtractBaseService<T> implements BaseService<T>{
             transaction = session.beginTransaction();
 
             classes = session.get(Classes.class, id);
+            return (T) classes;
         }catch (Exception e){
             transaction.rollback();
             return null;
@@ -50,7 +50,7 @@ public class AbtractBaseService<T> implements BaseService<T>{
                 session.close();
             }
         }
-        return (T) classes;
+
     }
 
     @Override
@@ -63,17 +63,17 @@ public class AbtractBaseService<T> implements BaseService<T>{
             transaction = session.beginTransaction();
 
             listObject = session.createQuery(sql). list();
+            return listObject;
         }catch (Exception e){
             e.getMessage();
             transaction.rollback();
-            return listObject;
+            return null;
         }
         finally {
-            if (session != null){
+            if (session != null) {
                 session.close();
             }
         }
-        return listObject;
     }
 
     @Override
@@ -84,6 +84,7 @@ public class AbtractBaseService<T> implements BaseService<T>{
             session = HiberanteUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.delete(entity);
+            return true;
         }catch (Exception e){
             transaction.rollback();
             return false;
@@ -93,6 +94,6 @@ public class AbtractBaseService<T> implements BaseService<T>{
                 session.close();
             }
         }
-        return true;
+
     }
 }

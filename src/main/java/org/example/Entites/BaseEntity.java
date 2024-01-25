@@ -21,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 abstract class BaseEntity implements Serializable {
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     @Column(name = "createDate")
     private Time createTime;
 

@@ -1,9 +1,6 @@
 package org.example.Entites;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -16,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Classes extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +32,7 @@ public class Classes extends BaseEntity {
     @Column(name = "timeStart", nullable = true, length = 11)
     private Time timeStart;
 
-    @Column(name = "subject", nullable = true, length = 255)
-    private String subject;
 
-    @OneToMany(mappedBy = "aClass", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "aClass", fetch = FetchType.EAGER)
     private List<Student> students;
 }

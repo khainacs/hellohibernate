@@ -39,7 +39,6 @@ public class Student extends BaseEntity{
     @JoinColumn(name = "classId", nullable = true)
     private Classes aClass;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
+    @OneToMany(mappedBy = "aStudent", fetch = FetchType.LAZY)
     private List<Subject> subjects;
-
 }

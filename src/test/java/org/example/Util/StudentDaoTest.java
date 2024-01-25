@@ -17,9 +17,9 @@ class StudentDaoTest {
     private static List<Student> students = new ArrayList<>();
     @BeforeAll
     public static void init(){
-        Classes class1 = new Classes(1L, "Math101", "Floor1", new Date(), new Time(System.currentTimeMillis()), "Math", null);
-        Classes class2 = new Classes(2L, "History202", "Floor2", new Date(), new Time(System.currentTimeMillis()), "History", null);
-        Classes class3 = new Classes(3L, "Physics303", "Floor3", new Date(), new Time(System.currentTimeMillis()), "Physics", null);
+        Classes class1 = new Classes(1L, "Math101", "Floor1", new Date(), new Time(System.currentTimeMillis()),  null);
+        Classes class2 = new Classes(2L, "History202", "Floor2", new Date(), new Time(System.currentTimeMillis()),  null);
+        Classes class3 = new Classes(3L, "Physics303", "Floor3", new Date(), new Time(System.currentTimeMillis()), null);
 
         Student student1 = new Student(1L, "John Doe", new Date(), "A101", "Spring", class1, null);
         Student student2 = new Student(2L, "Jane Smith", new Date(), "B202", "Fall", class2, null);

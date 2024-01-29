@@ -1,4 +1,4 @@
-package org.example.Entites;
+package org.example.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
 
 @Setter
 @Getter

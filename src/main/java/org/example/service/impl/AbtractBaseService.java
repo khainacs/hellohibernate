@@ -1,13 +1,16 @@
-package org.example.Service;
+package org.example.service.impl;
 
-import org.example.Entites.Classes;
-import org.example.Util.HiberanteUtil;
+import org.example.entites.Classes;
+import org.example.service.BaseService;
+import org.example.util.HiberanteUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Map;
 
-public class AbtractBaseService<T> implements BaseService<T>{
+public class AbtractBaseService<T> implements BaseService<T> {
     @Override
     public boolean save(T entity) {
         Session session = null;
@@ -95,5 +98,31 @@ public class AbtractBaseService<T> implements BaseService<T>{
             }
         }
 
+    }
+
+    @Override
+    public List<T> query(Class object, String sql, Map<String, Object> map) {
+        Session session = null;
+        Transaction transaction = null;
+        try{
+            session = HiberanteUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createNativeQuery(sql).addEntity(object);
+
+            if (map != null){
+                for (Map.Entry<String, Object> i: map.entrySet()) {
+                    query.setParameter(i.getKey(), i.getValue());
+                }
+            }
+            return query.list();
+        }catch (Exception e){
+            e.getMessage();
+            transaction.rollback();
+            return null;
+        }finally {
+            if (session != null && session.isOpen()){
+                session.close();
+            }
+        }
     }
 }

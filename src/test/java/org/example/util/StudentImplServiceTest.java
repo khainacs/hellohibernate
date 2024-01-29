@@ -1,8 +1,8 @@
-package org.example.Util;
+package org.example.util;
 
-import org.example.Entites.Classes;
-import org.example.Entites.Student;
-import org.example.Service.StudentDao;
+import org.example.entites.Classes;
+import org.example.entites.Student;
+import org.example.service.impl.StudentImplService;
 import org.junit.Assert;
 
 import java.sql.Time;
@@ -12,8 +12,8 @@ import java.util.List;
 
 import  org.junit.jupiter.api.*;
 
-class StudentDaoTest {
-    private static StudentDao studentDao = new StudentDao();
+class StudentImplServiceTest {
+    private static StudentImplService studentImplService = new StudentImplService();
     private static List<Student> students = new ArrayList<>();
     @BeforeAll
     public static void init(){
@@ -47,7 +47,7 @@ class StudentDaoTest {
     @Test
     public void saveTest(){
         for (Student i: students) {
-            boolean answer = studentDao.save(i);
+            boolean answer = studentImplService.save(i);
             Assert.assertEquals(true, answer);
         }
     }
@@ -55,21 +55,21 @@ class StudentDaoTest {
     @Test
     void getById() {
         for (Student i: students) {
-            Student student = (Student) studentDao.getById(i.getId());
+            Student student = (Student) studentImplService.getById(i.getId());
             Assert.assertEquals(i.getId(), student.getId());
         }
     }
 
     @Test
     void getAll() {
-        Assert.assertFalse(studentDao.getAll("from student").isEmpty());
+        Assert.assertFalse(studentImplService.getAll("from student").isEmpty());
     }
 
 
     @Test
     void delete() {
         for (Student i: students) {
-            boolean answer = studentDao.delete(i);
+            boolean answer = studentImplService.delete(i);
             Assert.assertEquals(true, answer);
         }
     }

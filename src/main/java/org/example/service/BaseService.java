@@ -1,9 +1,9 @@
-package org.example.Service;
+package org.example.service;
 
-import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
-interface BaseService<T> {
+public interface BaseService<T> {
     public boolean save(T entity);
 
     public T getById(Long id);
@@ -11,5 +11,7 @@ interface BaseService<T> {
     public List<T> getAll(String sql);
 
     public boolean delete(T entity);
+
+    public List<T> query(Class object, String sql, Map<String, Object> map);
 
 }

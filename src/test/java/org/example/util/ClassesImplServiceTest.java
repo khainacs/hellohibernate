@@ -1,8 +1,8 @@
-package org.example.Util;
+package org.example.util;
 
-import org.example.Entites.Classes;
-import org.example.Entites.Student;
-import org.example.Service.ClassesDao;
+import org.example.entites.Classes;
+import org.example.entites.Student;
+import org.example.service.impl.ClassesImplService;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-class ClassesDaoTest {
-    private static ClassesDao classesDao = new ClassesDao();
+class ClassesImplServiceTest {
+    private static ClassesImplService classesImplService = new ClassesImplService();
     private static List<Classes> classes = new ArrayList<>();
 
     @BeforeAll
@@ -57,7 +57,7 @@ class ClassesDaoTest {
     @Test
     public void saveTest(){
         for (Classes i: classes) {
-            boolean answer = classesDao.save(i);
+            boolean answer = classesImplService.save(i);
             Assert.assertEquals(true, answer);
         }
     }
@@ -70,7 +70,7 @@ class ClassesDaoTest {
 //            Assert.assertEquals(i.getId(), classes1.getId());
 //        }
 
-        classes1 = classesDao.getById(1L);
+        classes1 = classesImplService.getById(1L);
         System.out.println(classes1.getName());
     }
 
@@ -82,14 +82,14 @@ class ClassesDaoTest {
 
     @Test
     void getAll() {
-        Assert.assertFalse(classesDao.getAll("from Classes").isEmpty());
+        Assert.assertFalse(classesImplService.getAll("from Classes").isEmpty());
     }
 
 
     @Test
     void delete() {
         for (Classes i: classes) {
-            boolean answer = classesDao.delete(i);
+            boolean answer = classesImplService.delete(i);
             Assert.assertEquals(true, answer);
         }
     }

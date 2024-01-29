@@ -1,6 +1,5 @@
-package org.example.Entites;
+package org.example.entites;
 
-import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

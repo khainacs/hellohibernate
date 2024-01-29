@@ -1,15 +1,15 @@
 package org.example;
 
-import org.example.Entites.Classes;
-import org.example.Entites.Student;
-import org.example.Service.ClassesDao;
+import org.example.entites.Classes;
+import org.example.entites.Student;
+import org.example.service.impl.ClassesImplService;
 
 public class Main {
-    private static ClassesDao classesDao = new ClassesDao();
+    private static ClassesImplService classesImplService = new ClassesImplService();
     private static Student student = new Student();
 
     public static void main(String[] args) {
-        Classes classes = classesDao.getById(3L);
+        Classes classes = classesImplService.getById(3L);
         System.out.println(classes);
     }
 }

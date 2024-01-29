@@ -5,7 +5,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hellohibernate</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hellohibernate?createDatabaseIfNotExist=true</property>
         <property name="connection.username">root</property>
         <property name="hibernate.connection.autocommit"> true </property>
 
@@ -21,9 +21,9 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="org.example.Entites.Student"/>
-        <mapping class="org.example.Entites.Classes" />
-        <mapping class="org.example.Entites.Subject" />
+        <mapping class="org.example.entites.Student"/>
+        <mapping class="org.example.entites.Classes" />
+        <mapping class="org.example.entites.Subject" />
 
     </session-factory>
 </hibernate-configuration>
